@@ -26,9 +26,11 @@ app.get('/api/:state/:date', (req, res) => {
     { url: 'https://covidtracking.com/api/v1/states/' + state.toLocaleLowerCase() + '/' + date + '.json' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
-          console.log(error);
+        console.log("ERROR 1:")
+        console.log(error);
         return res.status(500).json({ type: 'error', error });
       }
+      console.log("BODY 1:")
       console.log(body);
       res.json(JSON.parse(body));
     }
@@ -44,8 +46,12 @@ app.get('/usa/:date', (req, res) => {
     { url: "https://covidtracking.com/api/v1/us/" + date + ".json" },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
+        console.log("ERROR 2:")
+        console.log(error)
         return res.status(500).json({ type: 'error', error });
       }
+      console.log("BODY 2:")
+      console.log(body)
       res.json(JSON.parse(body));
     }
   )
