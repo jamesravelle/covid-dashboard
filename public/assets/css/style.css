@@ -1,0 +1,179 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .grid * { grid-column: 2 / 5; }
+
+  header{
+    background: rgb(0,25,194);
+    background: linear-gradient(132deg, rgba(0,25,194,1) 0%, rgba(0,25,194,1) 27%, rgba(0,108,255,1) 27%, rgba(0,108,255,1) 100%);
+    color:white;
+    padding:30px 10px;
+  }
+
+  .modal-card-head{
+    background: rgba(0,108,255)
+  }
+
+  .select{width:100%; margin-right:10px;}
+  #location{width:100%; margin-right:10px;}
+  #date{margin-right:10px;}
+  #submit{width:25%;}
+  #current-location{width:25%; margin-left:2%; }
+
+  .modal-card-title{
+    font-family: 'Orbitron', sans-serif;
+    text-align:left;
+    font-size:20px;
+    color:white;
+  }
+
+  .navbar{
+    background-color:transparent;
+  }
+
+  .navbar-brand h1{
+    font-family: 'Orbitron', sans-serif;
+    text-align:left;
+    font-size:30px;
+    color:white;
+  }
+
+  .question-p{
+    text-align:left;
+    margin:5px;
+  }
+
+  #question{
+    margin:0 auto;
+    color:white;
+    cursor:pointer;
+  }
+
+  #question:hover{
+    color:gray;
+    text-decoration:underline;
+  }
+
+  .chart-wrapper{
+    box-shadow:2px 2px 9px black;
+    padding-bottom:10px;
+    overflow:hidden;
+    border-radius:5px;
+  }
+
+  #chartdiv {
+    height:500px; 
+    width:100%;
+    border-radius:10px;
+  }
+
+  #heatmap-key div{
+    font-size:11px;
+    font-weight:bold;
+    text-align:center;
+    padding:5px;
+  }
+
+  #total-header{
+    text-align:center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight:bold;
+    font-size:22px;
+    margin-bottom:10px;
+    color:rgba(0,25,194)
+  }
+
+  .output-table{
+    width:100%;
+  }
+
+  .output-table td{
+    border:1px solid gray;
+    padding:10px;
+    font-weight:bold;
+    font-size:16px;
+  }
+
+  .output-table td:nth-child(1){
+    width:66%;
+  }
+  .output-table td:nth-child(2){
+    width:33%;
+  }
+
+  #state-data td{
+    border:1px solid gray;
+    padding:3px;
+  }
+
+  #show-table{
+    display:block;
+    background: rgba(0,108,255);
+    color:white;
+  }
+
+  #show-table:hover{
+    background: rgba(0,25,194);
+    color:white;
+  }
+
+  #show-testing{
+    display:block;
+    background: rgba(0,108,255);
+    color:white;
+    margin-top:20px;
+  }
+
+  #show-testing:hover{
+    background: rgba(0,25,194);
+    color:white;
+  }
+
+  #news-headline{
+    font-family: 'Orbitron', sans-serif;
+    font-size:32px;
+    font-weight:bold;
+  }
+
+  #covid-news h5{
+    font-size:20px;
+    font-weight:bold;
+  }
+
+  #news-date{
+    font-size:14px;
+    font-style: italic;
+    font-weight:bold;
+    color:gray;
+  }
+
+  .news-section{
+    opacity:0;
+  }
+
+  @media (max-width:1024px){
+    .navbar-brand h1{ text-align:center; }
+    .select{width:100%; margin-bottom:10px;}
+    #location{width:100%; margin-bottom:10px;}
+    #date{margin-bottom:10px;}
+    #submit{width:49%;float:left;}
+    #current-location{width:49%; margin-left:2%; }
+    header{ background: rgba(0,108,255); }
+    #question{ text-align:center; }
+    .question-p{ text-align:center; }
+  }
+
+  .overlay{
+    position:relative;
+  }
+  .overlay:before{
+    content:"overlay";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:30;
+    background:blue;
+  }
