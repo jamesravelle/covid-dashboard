@@ -19,19 +19,14 @@ app.get('/', (req,res) => {
 // var query = "https://covidtracking.com/api/v1/states/" + state.toLocaleLowerCase() + "/" + date + ".json";
 
 app.get('/api/:state/:date', (req, res) => {
-    console.log("hit the STATES route!")
     let state = req.params.state;
     let date = req.params.date;
   request(
-    { url: 'https://covidtracking.com/api/v1/states/' + state.toLocaleLowerCase() + '/' + date + '.json' },
+    { url: 'https://covidtracking.com/api/v1/states/' + state.toLocaleLowerCase() + '/' + date},
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        console.log("ERROR 1:")
-        console.log(error);
         return res.status(500).json({ type: 'error', error });
       }
-      console.log("BODY 1:")
-      console.log(body);
       res.json(JSON.parse(body));
     }
   )
@@ -40,18 +35,13 @@ app.get('/api/:state/:date', (req, res) => {
 // var query = "https://covidtracking.com/api/v1/us/" + date + ".json";
 
 app.get('/usa/:date', (req, res) => {
-    console.log("hit the USA route!")
     let date = req.params.date;
   request(
-    { url: "https://covidtracking.com/api/v1/us/" + date + ".json" },
+    { url: "https://covidtracking.com/api/v1/us/" + date},
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
-        console.log("ERROR 2:")
-        console.log(error)
         return res.status(500).json({ type: 'error', error });
       }
-      console.log("BODY 2:")
-      console.log(body)
       res.json(JSON.parse(body));
     }
   )

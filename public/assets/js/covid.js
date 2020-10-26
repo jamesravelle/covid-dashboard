@@ -3,7 +3,7 @@ $( document ).ready(function() {
 
   function testAPI() {
     $.ajax({ // Added return statement here
-      url: '/api/pa/12012020',
+      url: '/api/pa/20200612',
       method:"GET",
       // dataType: 'jsonp',
       // cors: true ,
@@ -16,6 +16,7 @@ $( document ).ready(function() {
           }
       }
   }).then(function(response){
+    console.log("RESPONSE 1:")
       console.log(response);
   })
   }
@@ -24,7 +25,7 @@ $( document ).ready(function() {
 
   function testAPI2() {
     $.ajax({ // Added return statement here
-      url: 'usa/12012020',
+      url: 'usa/20200612',
       method:"GET",
       // dataType: 'jsonp',
       // cors: true ,
@@ -37,6 +38,7 @@ $( document ).ready(function() {
           }
       }
   }).then(function(response){
+    console.log("RESPONSE 2:")
       console.log(response);
   })
   }
@@ -63,9 +65,9 @@ getCovidStatsClick("USA", date)
 function getCovidStatsClick(state, date){
   if(state === "" || state === "USA"){
     state = "USA";
-    var query = "https://covidtracking.com/api/v1/us/" + date + ".json";
+    var query = "usa/" + date + ".json";
   } else {
-    var query = "https://covidtracking.com/api/v1/states/" + state.toLocaleLowerCase() + "/" + date + ".json";
+    var query = "api/" + state.toLocaleLowerCase() + "/" + date + ".json";
     zoomMap(state);
   } 
     console.log(query);
@@ -266,7 +268,7 @@ function getCovidStatsMap(x, y){
     var state = x;
     // date format: 20200501
     var date = y;
-    var query = "https://covidtracking.com/api/v1/states/" + state.toLocaleLowerCase() + "/" + date + ".json";
+    var query = "api/" + state.toLocaleLowerCase() + "/" + date + ".json";
     // console.log("Query: " + query)
     $.ajax({ // Added return statement here
         url:query,
@@ -283,7 +285,7 @@ function getCovidStatsMap(x, y){
             }
         }
     }).then(function(response){
-      console.log("Response: " + JSON.stringify(response))
+      // console.log("Response: " + JSON.stringify(response))
         buildHeatMap(response.state, response.positiveIncrease, response.hospitalizedCurrently);
     })
 }
