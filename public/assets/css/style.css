@@ -177,3 +177,13 @@
     bottom:30;
     background:blue;
   }
+
+  .loading::after{
+    content: 'Loading...';
+    background-color:#008BFF;
+    color:white;
+    padding:5px 10px;
+    position:absolute;
+    top:5%;
+    left:5%;
+  }

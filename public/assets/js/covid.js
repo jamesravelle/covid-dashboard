@@ -398,9 +398,11 @@ function getHospitalized(state){
 }
 
 polygonSeries.events.on("inited", function () {
+    $("#chartdiv").addClass("loading");
     setInterval(function(){ 
       if(heatmapSet){
         console.log("running")
+        $("#chartdiv").removeClass("loading");
         polygonSeries.mapPolygons.each(function (polygon) {
             // Fill
             let state = polygon.dataItem.dataContext.id.split("-").pop();
@@ -421,7 +423,7 @@ polygonSeries.events.on("inited", function () {
         });
         heatmapSet = false;
       }
-    }, 1000);
+    }, 2000);
 });
 
 /*
