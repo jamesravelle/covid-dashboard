@@ -1,6 +1,47 @@
 $( document ).ready(function() {
   console.log($('#location').val());
+
+  function testAPI() {
+    $.ajax({ // Added return statement here
+      url: '/api/pa/12012020',
+      method:"GET",
+      // dataType: 'jsonp',
+      // cors: true ,
+      // contentType:'application/json',
+      // secure: true,
+      error:function (xhr, ajaxOptions, thrownError){
+          if(xhr.status==404) {
+              alertError();
+              return;
+          }
+      }
+  }).then(function(response){
+      console.log(response);
+  })
+  }
  
+  testAPI();
+
+  function testAPI2() {
+    $.ajax({ // Added return statement here
+      url: '/us/12012020',
+      method:"GET",
+      // dataType: 'jsonp',
+      // cors: true ,
+      // contentType:'application/json',
+      // secure: true,
+      error:function (xhr, ajaxOptions, thrownError){
+          if(xhr.status==404) {
+              alertError();
+              return;
+          }
+      }
+  }).then(function(response){
+      console.log(response);
+  })
+  }
+ 
+  testAPI2();
 // Get Covid Numbers by state
 // Set global variables
 var result = "";
@@ -226,7 +267,7 @@ function getCovidStatsMap(x, y){
     // date format: 20200501
     var date = y;
     var query = "https://covidtracking.com/api/v1/states/" + state.toLocaleLowerCase() + "/" + date + ".json";
-    console.log("Query: " + query)
+    // console.log("Query: " + query)
     $.ajax({ // Added return statement here
         url:query,
         method:"GET",
