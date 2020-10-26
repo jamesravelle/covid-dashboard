@@ -19,6 +19,7 @@ app.get('/', (req,res) => {
 // var query = "https://covidtracking.com/api/v1/states/" + state.toLocaleLowerCase() + "/" + date + ".json";
 
 app.get('/api/:state/:date', (req, res) => {
+    console.log("hit the STATES route!")
     let state = req.params.state;
     let date = req.params.date;
   request(
@@ -36,7 +37,8 @@ app.get('/api/:state/:date', (req, res) => {
 
 // var query = "https://covidtracking.com/api/v1/us/" + date + ".json";
 
-app.get('/api/us/:date', (req, res) => {
+app.get('/usa/:date', (req, res) => {
+    console.log("hit the USA route!")
     let date = req.params.date;
   request(
     { url: "https://covidtracking.com/api/v1/us/" + date + ".json" },

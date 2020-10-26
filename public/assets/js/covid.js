@@ -24,7 +24,7 @@ $( document ).ready(function() {
 
   function testAPI2() {
     $.ajax({ // Added return statement here
-      url: '/us/12012020',
+      url: 'usa/12012020',
       method:"GET",
       // dataType: 'jsonp',
       // cors: true ,
