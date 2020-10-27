@@ -1,6 +1,5 @@
 # Covid-19 Dashboard
-Covid Dash is a web application that displays current and historical Covid-19 statistics in the USA. The data will default to all of the United States 
-for yesterday's date (the most up to date data available).
+Covid Dash is a web application that displays current and historical Covid-19 statistics in the USA. The data will default to all of the United States for yesterday's date (the most up to date data available).
 
 [View Application](https://afternoon-fjord-46442.herokuapp.com/)
 
@@ -36,6 +35,7 @@ These articles will be from January 1st, 2020 to the date entered.
 - [Vanilla Javascript](http://vanilla-js.com/)
 - [jQuery](https://jquery.com/)
 - [AM Charts Maps](https://www.amcharts.com/javascript-maps/)
+- [Express](https://expressjs.com/)
 
 ## APIs Used:
 - [Covid Tracking API](https://covidtracking.com/data/api)
