@@ -1,62 +1,17 @@
 $( document ).ready(function() {
   console.log($('#location').val());
 
-  function testAPI() {
-    $.ajax({ // Added return statement here
-      url: '/api/pa/20200612',
-      method:"GET",
-      // dataType: 'jsonp',
-      // cors: true ,
-      // contentType:'application/json',
-      // secure: true,
-      error:function (xhr, ajaxOptions, thrownError){
-          if(xhr.status==404) {
-              alertError();
-              return;
-          }
-      }
-  }).then(function(response){
-    console.log("RESPONSE 1:")
-      console.log(response);
-  })
-  }
- 
-  testAPI();
-
-  function testAPI2() {
-    $.ajax({ // Added return statement here
-      url: 'usa/20200612',
-      method:"GET",
-      // dataType: 'jsonp',
-      // cors: true ,
-      // contentType:'application/json',
-      // secure: true,
-      error:function (xhr, ajaxOptions, thrownError){
-          if(xhr.status==404) {
-              alertError();
-              return;
-          }
-      }
-  }).then(function(response){
-    console.log("RESPONSE 2:")
-      console.log(response);
-  })
-  }
- 
-  testAPI2();
 // Get Covid Numbers by state
 // Set global variables
-var result = "";
-var stateAbbr = "";
-var stateName = "";
-var stateArray = [];
-var positiveArray = [];
-var colorArray = [];
-var hospitalizedArray = [];
-var heatmapSet = true;
+
+let stateArray = [];
+let positiveArray = [];
+let colorArray = [];
+let hospitalizedArray = [];
+let heatmapSet = true;
 
 // Default date format YYYYMMDD ex. 20200612. Set default date to yesterday
-var date = outputDate(-1);
+let date = outputDate(-1);
 // Format outputted date
 printDate(date);
 // Run USA stats on load
@@ -110,10 +65,24 @@ function zoomMap(x){
     chart.zoomToMapObject(polygonSeries.getPolygonById(stateString));
 }
 
+Date.prototype.toDateInputValue = (function() {
+  // var local = new Date(this);
+  // local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+  // return local.toJSON().slice(0,10);
+  let today = new Date();
+  let yesterday = new Date()
+  yesterday.setDate(today.getDate() - 1);
+  return yesterday.toJSON().slice(0,10);
+});
+
 $('#submit').on("click", function(e){
     e.preventDefault();
     var location = $('#location').val();
-    date = $('#date').val();
+    if($('#date').val() !== ''){
+      date = $('#date').val();
+    } else {
+      date = new Date().toDateInputValue();
+    }
     date = date.replace(/-/g, '');
     console.log(date);
     getCovidStatsClick(location, parseInt(date));
@@ -437,7 +406,11 @@ $('#submit').on("click", function(e){
   console.log($('#location option:selected').text());
   heatmapSet = true
   var location = $('#location').val();
-  date = $('#date').val();
+  if($('#date').val() !== ''){
+    date = $('#date').val();
+  } else {
+    date = new Date().toDateInputValue();
+  }
   date = date.replace(/-/g, '');
   if(date.includes("/")){
     var newDate = date.replace(/\//g, '');
